@@ -68,6 +68,7 @@ Built as a single-user personal music service with a responsive, dark/light UI a
 ```bash
 git clone https://github.com/dmakurz/cascade-music-player.git
 cd cascade_music_v2
+mkdir music
 python -m venv venv
 source venv/bin/activate    # Linux/macOS
 # venv\Scripts\activate     # Windows
