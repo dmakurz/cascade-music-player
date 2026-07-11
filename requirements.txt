@@ -1,0 +1,7 @@
+fastapi>=0.109.0
+uvicorn>=0.27.0
+yt-dlp>=2024.03.10
+httpx>=0.26.0
+mutagen>=1.47.0
+pydantic>=2.0.0
+python-dotenv>=1.0.0
