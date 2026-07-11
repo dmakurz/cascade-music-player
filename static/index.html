@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="ru" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Cascade Music</title>
+    <script src="https://cdn.tailwindcss.com/3.4.4"></script>
+    <script src="https://unpkg.com/lucide@0.408.0/dist/umd/lucide.min.js"></script>
+    <link rel="manifest" href="/static/manifest.json">
+    <link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'><rect width='512' height='512' fill='%23fbbc04'/></svg>">
+    <meta name="theme-color" content="#fbbc04">
+    <link rel="stylesheet" href="/static/css/style.css">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: 'var(--primary)',
+                        'primary-hover': 'var(--primary-hover)',
+                        'bg-main': 'var(--bg-main)',
+                        'bg-card': 'var(--bg-card)',
+                        'sidebar': 'var(--bg-sidebar)',
+                        'border-color': 'var(--border-color)',
+                        muted: 'var(--text-muted)',
+                        main: 'var(--text-main)',
+                        'surface-hover': 'var(--surface-hover)'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="flex flex-col h-screen overflow-hidden bg-bg-main text-main">
+    
+    <!-- MAIN WRAPPER -->
+    <div class="flex flex-1 overflow-hidden w-full">
+        <!-- SIDEBAR (Desktop) -->
+        <aside class="w-64 flex-shrink-0 bg-sidebar border-r border-border-color flex flex-col z-20 hidden md:flex fade-in">
+            <div class="p-6 flex items-center gap-3 text-main">
+                <svg viewBox="0 0 512 512" class="w-8 h-8 fill-current text-primary" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M211.3 125.4c-22.3-9.5-47.5-6.6-67.4 7.6c-24.8 17.8-37.4 49-31.9 78.8c4.3 23.3 18.2 43.6 38.3 55.7c18 10.9 39.5 14.1 59.8 8.9c18.5-4.7 34.6-16.1 44.8-31.7c8.5-13 12.6-28.5 11.9-44c-.7-16.4-6.4-32.2-16.5-45.1c-10.4-13.3-24.5-23.4-40.4-28.8c-15.6-5.3-32.5-6.6-48.8-3.9c-15.1 2.5-29.3 9.4-40.4 19.8c-12 11.2-20.5 25.8-24.3 42c-4.2 17.6-3.7 36 1.4 53.3c5 17.1 13.9 32.7 25.6 45.6c11.7 12.9 26 23.1 41.9 29.8c16.3 6.9 34.1 10.1 51.9 9.3c18.4-.8 36.4-5.9 52.3-15c16.3-9.4 29.9-22.6 39.8-38.3c11.1-17.6 17.6-38.1 18.9-59.2c1.3-21.3-2.6-42.6-11.2-61.9c-8.9-19.9-22.1-37.2-38.5-50.5c-17-13.8-36.9-23.3-58.3-27.7c-21.7-4.5-44.5-4.2-66 .8c-21 4.9-40.8 14.5-57.5 27.9c-17.5 14.1-31.5 32-40.9 52.3c-10 21.6-14.8 45.5-14 69.6c.8 24.3 7 47.9 18 69.4c10.8 21.1 25.6 39.8 43.4 54.5c17.5 14.4 37.8 25 59.5 31c21.8 6.1 45 8.1 67.5 5.8c22.8-2.3 44.9-9.5 64.9-20.8c19.3-10.9 36.3-25.5 49.9-42.8c14.2-18.1 24.6-38.9 30.6-61.1c6.2-22.8 8.1-46.8 5.6-70.3c-2.4-22.6-9.1-44.5-19.5-64.4C374.3 118 359 101.4 340.5 89c-19-12.7-40.6-21.2-63.3-24.8c-22.8-3.6-46.5-3.1-69.1 1.6C185 70.6 163 80.2 143.6 94.3c-18.1 13.2-33.4 30.1-44.6 49.5c-11.4 19.8-18.4 42-20.7 64.9c-2.3 22.8-.2 46.1 5.9 68.3c6.1 22.1 16 42.8 29 61c12.5 17.5 28.3 32.4 46.2 43.7c18.5 11.7 39 19.6 60.5 23.3c21.5 3.7 43.8 3.5 65.2-1.1c21.2-4.5 41.3-13.4 59.2-25.7M416 192c-17.7 0-32-14.3-32-32s14.3-32 32-32s32 14.3 32 32s-14.3 32-32 32zm0 96c-17.7 0-32-14.3-32-32s14.3-32 32-32s32 14.3 32 32s-14.3 32-32 32z"/>
+                </svg>
+                <h1 class="text-xl font-bold tracking-tight">Cascade</h1>
+            </div>
+
+            <div class="px-4 mb-2">
+                <div id="lb-status-badge" class="flex items-center gap-2 px-3 py-1.5 rounded-lg text-xs font-medium text-muted bg-surface-hover border border-border-color transition-colors">
+                    <span class="w-2 h-2 rounded-full bg-muted"></span> Подключение...
+                </div>
+            </div>
+
+            <nav class="flex-1 px-4 space-y-1 mt-4 overflow-y-auto pb-4 text-sm font-medium">
+                <div class="text-[11px] font-semibold uppercase tracking-wider text-muted px-3 mb-2">Меню</div>
+                <button id="nav-home" onclick="switchTab('home')" class="nav-item w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-left text-muted hover:bg-surface-hover hover:text-main transition-colors">
+                    <i data-lucide="home" class="w-5 h-5"></i> Главная
+                </button>
+                <button id="nav-search" onclick="switchTab('search')" class="nav-item w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-left text-muted hover:bg-surface-hover hover:text-main transition-colors">
+                    <i data-lucide="search" class="w-5 h-5"></i> Поиск
+                </button>
+                <button onclick="openRadio(null, 'Trending', '')" class="nav-item w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-left text-muted hover:bg-surface-hover hover:text-main transition-colors">
+                    <i data-lucide="radio" class="w-5 h-5"></i> Радио
+                </button>
+                
+                <div class="text-[11px] font-semibold uppercase tracking-wider text-muted px-3 mt-6 mb-2">Медиатека</div>
+                <button onclick="switchTab('library'); loadLibrary('favorites');" class="nav-item w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-left text-muted hover:bg-surface-hover hover:text-main transition-colors">
+                    <i data-lucide="heart" class="w-5 h-5"></i> Избранное
+                </button>
+                <button onclick="switchTab('library'); loadLibrary('playlists');" class="nav-item w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-left text-muted hover:bg-surface-hover hover:text-main transition-colors">
+                    <i data-lucide="list-music" class="w-5 h-5"></i> Плейлисты
+                </button>
+                <button id="nav-stats" onclick="switchTab('stats')" class="nav-item w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-left text-muted hover:bg-surface-hover hover:text-main transition-colors">
+                    <i data-lucide="bar-chart-2" class="w-5 h-5"></i> Статистика
+                </button>
+                <button id="nav-settings" onclick="switchTab('settings')" class="nav-item w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-left text-muted hover:bg-surface-hover hover:text-main transition-colors">
+                    <i data-lucide="settings" class="w-5 h-5"></i> Настройки
+                </button>
+            </nav>
+        </aside>
+
+        <!-- MAIN CONTENT AREA -->
+        <main class="flex-1 flex flex-col relative overflow-hidden z-10 fade-in">
+            
+            <!-- TOP ACTION BAR -->
+            <header class="flex items-center justify-between px-6 py-4 border-b border-border-color z-10 bg-bg-main flex-shrink-0 transition-colors">
+                <div class="flex items-center gap-3">
+                    <div class="md:hidden flex items-center gap-2 font-bold text-lg text-main">
+                        <svg viewBox="0 0 512 512" class="w-6 h-6 fill-current text-primary" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M211.3 125.4c-22.3-9.5-47.5-6.6-67.4 7.6c-24.8 17.8-37.4 49-31.9 78.8c4.3 23.3 18.2 43.6 38.3 55.7c18 10.9 39.5 14.1 59.8 8.9c18.5-4.7 34.6-16.1 44.8-31.7c8.5-13 12.6-28.5 11.9-44c-.7-16.4-6.4-32.2-16.5-45.1c-10.4-13.3-24.5-23.4-40.4-28.8c-15.6-5.3-32.5-6.6-48.8-3.9c-15.1 2.5-29.3 9.4-40.4 19.8c-12 11.2-20.5 25.8-24.3 42c-4.2 17.6-3.7 36 1.4 53.3c5 17.1 13.9 32.7 25.6 45.6c11.7 12.9 26 23.1 41.9 29.8c16.3 6.9 34.1 10.1 51.9 9.3c18.4-.8 36.4-5.9 52.3-15c16.3-9.4 29.9-22.6 39.8-38.3c11.1-17.6 17.6-38.1 18.9-59.2c1.3-21.3-2.6-42.6-11.2-61.9c-8.9-19.9-22.1-37.2-38.5-50.5c-17-13.8-36.9-23.3-58.3-27.7c-21.7-4.5-44.5-4.2-66 .8c-21 4.9-40.8 14.5-57.5 27.9c-17.5 14.1-31.5 32-40.9 52.3c-10 21.6-14.8 45.5-14 69.6c.8 24.3 7 47.9 18 69.4c10.8 21.1 25.6 39.8 43.4 54.5c17.5 14.4 37.8 25 59.5 31c21.8 6.1 45 8.1 67.5 5.8c22.8-2.3 44.9-9.5 64.9-20.8c19.3-10.9 36.3-25.5 49.9-42.8c14.2-18.1 24.6-38.9 30.6-61.1c6.2-22.8 8.1-46.8 5.6-70.3c-2.4-22.6-9.1-44.5-19.5-64.4C374.3 118 359 101.4 340.5 89c-19-12.7-40.6-21.2-63.3-24.8c-22.8-3.6-46.5-3.1-69.1 1.6C185 70.6 163 80.2 143.6 94.3c-18.1 13.2-33.4 30.1-44.6 49.5c-11.4 19.8-18.4 42-20.7 64.9c-2.3 22.8-.2 46.1 5.9 68.3c6.1 22.1 16 42.8 29 61c12.5 17.5 28.3 32.4 46.2 43.7c18.5 11.7 39 19.6 60.5 23.3c21.5 3.7 43.8 3.5 65.2-1.1c21.2-4.5 41.3-13.4 59.2-25.7M416 192c-17.7 0-32-14.3-32-32s14.3-32 32-32s32 14.3 32 32s-14.3 32-32 32zm0 96c-17.7 0-32-14.3-32-32s14.3-32 32-32s32 14.3 32 32s-14.3 32-32 32z"/>
+                        </svg>
+                        Cascade
+                    </div>
+                    <span class="hidden md:inline-flex items-center gap-1.5 text-xs text-muted transition-colors">
+                        <i data-lucide="shield-check" class="w-4 h-4 text-primary"></i> Проксирование активно
+                    </span>
+                </div>
+            </header>
+
+            <!-- SCROLLABLE CONTAINER -->
+            <div class="flex-1 overflow-y-auto px-6 py-8 scroll-smooth" id="main-scroll-container">
+                
+                <!-- HOME TAB -->
+                <div id="tab-home" class="tab-content block max-w-7xl mx-auto fade-in">
+                    <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8">
+                        <div>
+                            <h2 class="text-3xl font-bold tracking-tight text-main transition-colors">Рекомендации</h2>
+                            <p class="text-sm text-muted mt-1 transition-colors">Подборка на основе активности ListenBrainz и трендов</p>
+                        </div>
+                    </div>
+
+                    <div id="section-lb-playlists" class="mb-10 hidden fade-in">
+                        <h3 class="text-xl font-semibold mb-4 text-main transition-colors">Ваши автоплейлисты</h3>
+                        <div id="grid-lb-playlists" class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-4"></div>
+                    </div>
+
+                    <h3 class="text-xl font-semibold mb-4 text-main transition-colors">Персональный микс</h3>
+                    <div id="grid-recommendations" class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4 mb-10"></div>
+
+                    <h3 class="text-xl font-semibold mb-4 text-main transition-colors">Чарты</h3>
+                    <div id="grid-charts" class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4"></div>
+                </div>
+
+                <!-- SEARCH TAB -->
+                <div id="tab-search" class="tab-content hidden max-w-5xl mx-auto fade-in">
+                    <div class="mb-8">
+                        <div class="relative w-full max-w-3xl mx-auto">
+                            <i data-lucide="search" class="absolute left-4 top-1/2 transform -translate-y-1/2 text-muted w-5 h-5"></i>
+                            <input type="text" id="search-input" placeholder="Поиск исполнителя, трека или альбома..." 
+                                class="w-full pl-12 pr-6 py-4 rounded-full bg-surface-hover text-main placeholder-muted border border-transparent focus:border-primary focus:outline-none transition-colors text-base shadow-sm"
+                                onkeypress="if(event.key === 'Enter') performSearch(true)">
+                        </div>
+                    </div>
+
+                    <div class="flex items-center justify-center gap-2 mb-8">
+                        <button onclick="setSearchFilter('songs', this)" class="search-filter-btn px-4 py-1.5 rounded-full text-sm font-medium transition-colors bg-primary text-black">Треки</button>
+                        <button onclick="setSearchFilter('artists', this)" class="search-filter-btn px-4 py-1.5 rounded-full text-sm font-medium transition-colors bg-transparent border border-border-color text-muted hover:bg-surface-hover">Исполнители</button>
+                        <button onclick="setSearchFilter('albums', this)" class="search-filter-btn px-4 py-1.5 rounded-full text-sm font-medium transition-colors bg-transparent border border-border-color text-muted hover:bg-surface-hover">Альбомы</button>
+                        <button onclick="setSearchFilter('playlists', this)" class="search-filter-btn px-4 py-1.5 rounded-full text-sm font-medium transition-colors bg-transparent border border-border-color text-muted hover:bg-surface-hover">Плейлисты</button>
+                    </div>
+
+                    <div id="search-results" class="fade-in">
+                        <div class="text-center py-20 text-muted transition-colors">
+                            <p class="text-sm">Введите запрос для начала поиска</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ARTIST DETAILS VIEW -->
+                <div id="tab-artist-view" class="tab-content hidden max-w-6xl mx-auto fade-in"></div>
+
+                <!-- ALBUM DETAILS VIEW -->
+                <div id="tab-album-view" class="tab-content hidden max-w-6xl mx-auto fade-in"></div>
+
+                <!-- PLAYLIST DETAILS VIEW -->
+                <div id="tab-playlist-view" class="tab-content hidden max-w-6xl mx-auto fade-in"></div>
+
+                <!-- LIBRARY TAB -->
+                <div id="tab-library" class="tab-content hidden max-w-5xl mx-auto fade-in">
+                    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
+                        <h2 class="text-3xl font-bold text-main transition-colors">Медиатека</h2>
+                        <div class="flex items-center gap-2 overflow-x-auto pb-2 sm:pb-0">
+                            <button id="lib-btn-favorites" onclick="loadLibrary('favorites')" class="lib-tab-btn px-4 py-1.5 rounded-full font-medium text-sm transition-colors bg-transparent border border-border-color text-muted hover:bg-surface-hover">Избранное</button>
+                            <button id="lib-btn-playlists" onclick="loadLibrary('playlists')" class="lib-tab-btn px-4 py-1.5 rounded-full font-medium text-sm transition-colors bg-transparent border border-border-color text-muted hover:bg-surface-hover">Плейлисты</button>
+                            <button id="lib-btn-history" onclick="loadLibrary('history')" class="lib-tab-btn px-4 py-1.5 rounded-full font-medium text-sm transition-colors bg-transparent border border-border-color text-muted hover:bg-surface-hover">История</button>
+                            <button id="lib-btn-local" onclick="loadLibrary('local')" class="lib-tab-btn px-4 py-1.5 rounded-full font-medium text-sm transition-colors bg-transparent border border-border-color text-muted hover:bg-surface-hover">Локальные</button>
+                        </div>
+                    </div>
+                    <div id="library-content" class="bg-card rounded-2xl border border-border-color p-4 transition-colors"></div>
+                </div>
+
+                <!-- STATS TAB -->
+                <div id="tab-stats" class="tab-content hidden max-w-5xl mx-auto fade-in">
+                    <h2 class="text-3xl font-bold mb-2 transition-colors">Статистика</h2>
+                    <p class="text-muted mb-8 text-sm transition-colors">Данные синхронизируются с ListenBrainz</p>
+                    <div id="stats-content"></div>
+                </div>
+
+                <!-- SETTINGS TAB -->
+                <div id="tab-settings" class="tab-content hidden max-w-3xl mx-auto fade-in">
+                    <h2 class="text-3xl font-bold mb-6 text-main transition-colors">Настройки</h2>
+                    
+                    <div class="space-y-4">
+                        <div class="bg-card p-6 rounded-2xl border border-border-color transition-colors">
+                            <h3 class="text-lg font-medium mb-1 text-main transition-colors">Оформление</h3>
+                            <p class="text-sm text-muted mb-4 transition-colors">Выбор темы приложения (или используйте Alt+T).</p>
+                            <select id="select-theme-style" onchange="changeTheme(this.value)" class="w-full md:w-1/2 p-3 rounded-lg bg-surface-hover text-main border border-transparent outline-none text-sm transition-colors">
+                                <option value="light">Светлая тема (Light)</option>
+                                <option value="dark">Темная тема (Dark)</option>
+                            </select>
+                        </div>
+
+                        <div class="bg-card p-6 rounded-2xl border border-border-color transition-colors">
+                            <h3 class="text-lg font-medium mb-1 text-main transition-colors">ListenBrainz Token</h3>
+                            <p class="text-sm text-muted mb-4 transition-colors">Авторизация для скробблинга и рекомендаций.</p>
+                            <div class="flex gap-2">
+                                <input type="text" id="input-lb-token" class="flex-1 p-3 rounded-lg bg-surface-hover text-main border border-transparent outline-none focus:border-primary text-sm font-mono transition-colors" placeholder="1234abcd-...">
+                                <button onclick="saveSettings()" class="bg-primary text-black px-6 py-3 rounded-lg text-sm font-medium hover:bg-primary-hover transition-colors shadow">Сохранить</button>
+                            </div>
+                        </div>
+
+                        <div class="bg-card p-6 rounded-2xl border border-border-color transition-colors">
+                            <h3 class="text-lg font-medium mb-4 text-main transition-colors">Воспроизведение</h3>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div>
+                                    <label class="block text-xs font-medium text-muted mb-1 transition-colors">Качество</label>
+                                    <select id="select-audio-quality" class="w-full p-3 rounded-lg bg-surface-hover text-main border border-transparent outline-none text-sm transition-colors">
+                                        <option value="high">Высокое (256+ кбит/с)</option>
+                                        <option value="medium">Стандарт (128 кбит/с)</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-medium text-muted mb-1 transition-colors">Эквалайзер</label>
+                                    <select id="select-eq-preset" class="w-full p-3 rounded-lg bg-surface-hover text-main border border-transparent outline-none text-sm transition-colors">
+                                        <option value="flat">Отключен (Flat)</option>
+                                        <option value="bass_boost">Bass Boost</option>
+                                        <option value="electronic">Electronic</option>
+                                        <option value="rock">Rock</option>
+                                        <option value="pop">Pop</option>
+                                    </select>
+                                </div>
+                                <div class="md:col-span-2 mt-2">
+                                    <label class="block text-xs font-medium text-muted mb-1 transition-colors">Режим проксирования</label>
+                                    <select id="select-stream-mode" class="w-full p-3 rounded-lg bg-surface-hover text-main border border-transparent outline-none text-sm transition-colors">
+                                        <option value="proxy">Smart Proxy 206 (Стабильный веб-стриминг)</option>
+                                        <option value="direct">Direct CDN (Редирект)</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="mt-4 flex justify-end">
+                                <button onclick="saveSettings()" class="bg-surface-hover text-primary px-4 py-2 rounded-lg text-sm font-medium hover:bg-border-color transition-colors">Применить</button>
+                            </div>
+                        </div>
+
+                        <div class="bg-card p-6 rounded-2xl border border-border-color transition-colors">
+                            <h3 class="text-lg font-medium mb-1 text-main transition-colors">Черный список</h3>
+                            <p class="text-sm text-muted mb-4 transition-colors">Управление заблокированными исполнителями и треками.</p>
+                            <div id="settings-blacklist-container" class="mt-2"></div>
+                        </div>
+
+                        <div class="bg-card p-6 rounded-2xl border border-border-color transition-colors">
+                            <h3 class="text-lg font-medium mb-1 text-main transition-colors">Локальная медиатека</h3>
+                            <p class="text-sm text-muted mb-4 transition-colors">Сканирование папки <code class="text-primary">/music</code> для воспроизведения локальных треков (MP3, FLAC, OGG, M4A, WAV).</p>
+                            <button onclick="scanLocalLibrary()" class="bg-primary text-black px-5 py-2.5 rounded-lg text-sm font-medium hover:bg-primary-hover transition-colors">Сканировать</button>
+                        </div>
+
+                        <div class="bg-card p-6 rounded-2xl border border-border-color transition-colors">
+                            <h3 class="text-lg font-medium mb-1 text-main transition-colors">Таймер сна</h3>
+                            <p class="text-sm text-muted mb-4 transition-colors">Остановить воспроизведение через заданное время.</p>
+                            <div class="flex gap-2 flex-wrap">
+                                <button onclick="setSleepTimer(0)" class="px-4 py-2 rounded-lg bg-surface-hover text-muted text-sm font-medium hover:bg-border-color transition-colors">Выкл</button>
+                                <button onclick="setSleepTimer(15)" class="px-4 py-2 rounded-lg bg-surface-hover text-main text-sm font-medium hover:bg-border-color transition-colors">15 мин</button>
+                                <button onclick="setSleepTimer(30)" class="px-4 py-2 rounded-lg bg-surface-hover text-main text-sm font-medium hover:bg-border-color transition-colors">30 мин</button>
+                                <button onclick="setSleepTimer(60)" class="px-4 py-2 rounded-lg bg-surface-hover text-main text-sm font-medium hover:bg-border-color transition-colors">60 мин</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </main>
+    </div>
+
+    <!-- DOCKED BOTTOM PLAYER BAR -->
+    <div id="player-bar" class="flex-shrink-0 h-16 md:h-20 bg-card border-t border-border-color flex items-center justify-between px-4 md:px-6 w-full relative z-[60] transition-all duration-300">
+        
+        <!-- NEW PROGRESS BAR (Top full width) -->
+        <div id="top-progress-container" class="absolute top-0 left-0 w-full h-1 md:h-1.5 -mt-1 md:-mt-1.5 cursor-pointer z-50 group bg-border-color transition-colors" onclick="seekTopProgressBar(event)">
+            <div id="top-progress-fill" class="h-full bg-primary relative pointer-events-none w-0 transition-colors">
+                <div class="absolute right-0 top-1/2 -translate-y-1/2 w-3 h-3 bg-primary rounded-full opacity-0 group-hover:opacity-100 transform translate-x-1/2 shadow transition-opacity"></div>
+            </div>
+        </div>
+
+        <!-- Track Info (Left) -->
+        <div class="flex items-center gap-3 w-1/3 min-w-0 mt-1">
+            <div id="player-art" onclick="toggleNowPlayingModal()" class="w-10 h-10 md:w-12 md:h-12 bg-surface-hover rounded-md flex-shrink-0 bg-cover bg-center cursor-pointer border border-border-color transition-colors shadow-sm"></div>
+            <div class="min-w-0 flex-1 cursor-pointer" onclick="toggleNowPlayingModal()">
+                <h4 id="player-title" class="font-semibold text-sm md:text-base text-main truncate hover:underline transition-colors">Ничего не играет</h4>
+                <p id="player-artist" class="text-xs text-muted truncate transition-colors">Выберите трек</p>
+            </div>
+        </div>
+
+        <!-- Controls (Center) -->
+        <div class="flex flex-col items-center justify-center w-1/3 max-w-md mt-1">
+            <div class="flex items-center gap-4 md:gap-6">
+                <button id="shuffle-btn" onclick="toggleShuffle()" class="text-muted hover:text-main transition-colors p-1 active:scale-95" title="Случайный порядок">
+                    <i data-lucide="shuffle" class="w-4 h-4"></i>
+                </button>
+                <button onclick="prevTrack()" class="text-main hover:text-primary transition-colors p-1 active:scale-95" title="Предыдущий">
+                    <i data-lucide="skip-back" class="w-5 h-5 fill-current"></i>
+                </button>
+                
+                <button id="play-btn" onclick="togglePlay()" class="w-10 h-10 rounded-full bg-surface-hover text-main hover:text-primary hover:bg-border-color flex items-center justify-center transition-all shadow-sm active:scale-95">
+                    <i data-lucide="play" class="w-5 h-5 ml-0.5 fill-current"></i>
+                </button>
+                
+                <button onclick="nextTrack()" class="text-main hover:text-primary transition-colors p-1 active:scale-95" title="Следующий">
+                    <i data-lucide="skip-forward" class="w-5 h-5 fill-current"></i>
+                </button>
+                <button id="repeat-btn" onclick="toggleRepeat()" class="text-muted hover:text-main transition-colors p-1 active:scale-95" title="Повтор">
+                    <i data-lucide="repeat" class="w-4 h-4"></i>
+                </button>
+            </div>
+            
+            <div class="w-full flex items-center justify-center gap-2 mt-1 hidden md:flex">
+                <span id="time-current" class="text-[11px] text-muted font-mono transition-colors">0:00</span>
+                <span class="text-[11px] text-muted opacity-50">/</span>
+                <span id="time-total" class="text-[11px] text-muted font-mono transition-colors">0:00</span>
+            </div>
+        </div>
+
+        <!-- Extra / Volume (Right) -->
+        <div class="w-1/3 flex items-center justify-end gap-2 md:gap-4 mt-1">
+            <div id="playing-anim-bar" class="hidden mr-2">
+                <div class="playing-anim">
+                    <div class="playing-bar"></div><div class="playing-bar"></div><div class="playing-bar"></div><div class="playing-bar"></div>
+                </div>
+            </div>
+
+            <button onclick="toggleDislikeTrack(null)" class="p-2 text-muted hover:text-red-500 transition-colors rounded-full hover:bg-surface-hover" title="Не нравится (Пропустить)">
+                <i id="player-dis-btn-icon" data-lucide="heart-crack" class="w-5 h-5"></i>
+            </button>
+
+            <button onclick="toggleCurrentFavorite()" class="p-2 text-muted hover:text-primary transition-colors rounded-full hover:bg-surface-hover" title="В избранное">
+                <i id="player-fav-btn-icon" data-lucide="heart" class="w-5 h-5"></i>
+            </button>
+
+            <button id="queue-toggle-btn" onclick="toggleQueueModal()" class="p-2 text-muted hover:text-primary transition-colors rounded-full hover:bg-surface-hover hidden sm:block" title="Очередь">
+                <i data-lucide="list-music" class="w-5 h-5"></i>
+            </button>
+
+            <div class="items-center gap-2 hidden lg:flex ml-2">
+                <button onclick="audio.muted = !audio.muted" class="text-muted hover:text-main transition-colors">
+                    <i id="volume-icon" data-lucide="volume-2" class="w-5 h-5"></i>
+                </button>
+                <input type="range" id="volume-bar" value="100" min="0" max="100" class="w-20 transition-colors custom-range">
+            </div>
+        </div>
+    </div>
+
+    <!-- MOBILE BOTTOM NAVIGATION -->
+    <nav class="md:hidden flex-shrink-0 bg-bg-main border-t border-border-color flex items-center justify-around h-16 w-full z-40 transition-colors">
+        <button data-tab="home" onclick="switchTab('home')" class="p-2 text-muted flex flex-col items-center gap-1 text-[10px] font-medium"><i data-lucide="home" class="w-5 h-5"></i>Главная</button>
+        <button data-tab="search" onclick="switchTab('search')" class="p-2 text-muted flex flex-col items-center gap-1 text-[10px] font-medium"><i data-lucide="search" class="w-5 h-5"></i>Поиск</button>
+        <button onclick="openRadio(null, 'Trending', '')" class="p-2 text-muted flex flex-col items-center gap-1 text-[10px] font-medium"><i data-lucide="radio" class="w-5 h-5"></i>Радио</button>
+        <button data-tab="library" onclick="switchTab('library'); loadLibrary('favorites');" class="p-2 text-muted flex flex-col items-center gap-1 text-[10px] font-medium"><i data-lucide="folder-music" class="w-5 h-5"></i>Медиатека</button>
+        <button data-tab="stats" onclick="switchTab('stats')" class="p-2 text-muted flex flex-col items-center gap-1 text-[10px] font-medium"><i data-lucide="bar-chart-2" class="w-5 h-5"></i>Статистика</button>
+        <button data-tab="settings" onclick="switchTab('settings')" class="p-2 text-muted flex flex-col items-center gap-1 text-[10px] font-medium"><i data-lucide="settings" class="w-5 h-5"></i>Настройки</button>
+    </nav>
+
+    <!-- FULLSCREEN NOW PLAYING MODAL (KARAOKE) -->
+    <div id="now-playing-modal" class="fixed inset-0 z-50 flex flex-col p-6 md:p-10 hidden overflow-hidden" onclick="if(event.target === this || event.target.id === 'visualizer-canvas') toggleNowPlayingModal()">
+        
+        <canvas id="visualizer-canvas"></canvas>
+
+        <!-- Тонкая полоска прогресса внизу модалки -->
+        <div id="modal-progress-container" class="fixed bottom-0 left-0 w-full h-1 cursor-pointer z-30 group" onclick="seekModalProgressBar(event)">
+            <div id="modal-progress-fill" class="h-full bg-white/80 relative pointer-events-none w-0 transition-colors"></div>
+        </div>
+
+        <div class="relative z-10 flex items-center justify-between">
+            <button onclick="toggleNowPlayingModal()" class="p-2 rounded-full hover:bg-white/20 text-white transition-colors shadow">
+                <i data-lucide="chevron-down" class="w-6 h-6"></i>
+            </button>
+            <span class="text-sm font-medium text-white tracking-wide bg-black/20 backdrop-blur-md px-4 py-1.5 rounded-full shadow">Сейчас играет</span>
+            <button onclick="toggleEqualizerModal()" class="p-2 rounded-full hover:bg-white/20 text-white transition-colors shadow" title="Эквалайзер">
+                <i data-lucide="sliders" class="w-5 h-5"></i>
+            </button>
+        </div>
+
+        <div class="relative z-10 flex-1 grid grid-cols-1 md:grid-cols-2 gap-8 items-center justify-center max-w-6xl mx-auto w-full my-4 md:my-6 h-full pointer-events-none">
+            <!-- Left Side: Cover & Info -->
+            <div class="flex flex-col items-center md:items-start text-center md:text-left pointer-events-auto">
+                <img id="now-playing-art" src="" class="w-64 h-64 md:w-96 md:h-96 rounded-2xl object-cover mb-6 border border-white/10" style="box-shadow: 0 10px 40px rgba(0,0,0,0.5);">
+                <h2 id="now-playing-title" class="text-3xl md:text-5xl font-extrabold text-white mb-2 truncate w-full drop-shadow-lg" style="text-shadow: 0 2px 10px rgba(0,0,0,0.6);">Название трека</h2>
+                <p id="now-playing-artist" class="text-xl md:text-2xl text-white/80 font-medium truncate w-full drop-shadow" style="text-shadow: 0 1px 5px rgba(0,0,0,0.6);">Исполнитель</p>
+            </div>
+
+            <!-- Right Side: Borderless Lyrics -->
+            <div class="h-full flex-1 max-h-[65vh] w-full relative mask-lyrics mt-6 md:mt-0 px-2 md:px-8 pointer-events-auto">
+                <div id="lyrics-container" class="w-full h-full overflow-y-auto no-scrollbar scroll-smooth pb-[40vh] pt-[30vh]">
+                    <div class="text-center text-white/50 text-sm mt-10">Текст песни загружается...</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- QUEUE OVERLAY & MODAL -->
+    <div id="queue-overlay" class="fixed inset-0 z-40 hidden" onclick="toggleQueueModal()"></div>
+    <div id="queue-modal" class="fixed bottom-20 md:bottom-24 right-4 md:right-6 w-80 max-h-96 border border-border-color rounded-xl shadow-2xl z-50 overflow-hidden hidden flex flex-col transition-all fade-in" style="background-color: var(--bg-card);">
+        <div class="p-4 border-b border-border-color flex items-center justify-between bg-surface-hover">
+            <h3 class="font-medium text-sm text-main">Очередь</h3>
+            <div class="flex items-center gap-2 text-xs">
+                <button onclick="clearQueue()" class="text-muted hover:text-main transition-colors">Очистить</button>
+                <button onclick="toggleQueueModal()" class="text-muted hover:text-main ml-2"><i data-lucide="x" class="w-4 h-4"></i></button>
+            </div>
+        </div>
+        <div id="queue-list-container" class="flex-1 overflow-y-auto p-2 no-scrollbar"></div>
+    </div>
+
+    <!-- EQUALIZER MODAL -->
+    <div id="equalizer-modal" class="fixed inset-0 z-50 bg-black/60 backdrop-blur-md flex items-center justify-center p-4 hidden transition-opacity fade-in" onclick="if(event.target === this) toggleEqualizerModal()">
+        <div class="border border-border-color rounded-3xl p-8 max-w-md w-full shadow-2xl relative transition-transform" style="background-color: var(--bg-card);">
+            <button onclick="toggleEqualizerModal()" class="absolute top-5 right-5 text-muted hover:text-main bg-surface-hover rounded-full p-1 transition-colors"><i data-lucide="x" class="w-5 h-5"></i></button>
+            
+            <h3 class="text-xl font-bold mb-6 text-main">Эквалайзер</h3>
+
+            <div class="mb-8">
+                <select id="eq-preset-select" onchange="applyEqPreset(this.value); saveSettings();" class="w-full p-3 rounded-xl bg-surface-hover text-main border border-transparent outline-none text-sm font-medium transition-colors">
+                    <option value="flat">Отключен (Flat)</option>
+                    <option value="bass_boost">Усиление басов</option>
+                    <option value="electronic">Электронная</option>
+                    <option value="rock">Рок</option>
+                    <option value="pop">Поп</option>
+                </select>
+            </div>
+
+            <div class="flex justify-between h-40 px-2 mb-6">
+                <input type="range" id="eq-band-0" min="-12" max="12" value="0" step="1" class="eq-slider" oninput="onEqSliderChange(0, this.value)">
+                <input type="range" id="eq-band-1" min="-12" max="12" value="0" step="1" class="eq-slider" oninput="onEqSliderChange(1, this.value)">
+                <input type="range" id="eq-band-2" min="-12" max="12" value="0" step="1" class="eq-slider" oninput="onEqSliderChange(2, this.value)">
+                <input type="range" id="eq-band-3" min="-12" max="12" value="0" step="1" class="eq-slider" oninput="onEqSliderChange(3, this.value)">
+                <input type="range" id="eq-band-4" min="-12" max="12" value="0" step="1" class="eq-slider" oninput="onEqSliderChange(4, this.value)">
+                <input type="range" id="eq-band-5" min="-12" max="12" value="0" step="1" class="eq-slider" oninput="onEqSliderChange(5, this.value)">
+                <input type="range" id="eq-band-6" min="-12" max="12" value="0" step="1" class="eq-slider" oninput="onEqSliderChange(6, this.value)">
+                <input type="range" id="eq-band-7" min="-12" max="12" value="0" step="1" class="eq-slider" oninput="onEqSliderChange(7, this.value)">
+                <input type="range" id="eq-band-8" min="-12" max="12" value="0" step="1" class="eq-slider" oninput="onEqSliderChange(8, this.value)">
+                <input type="range" id="eq-band-9" min="-12" max="12" value="0" step="1" class="eq-slider" oninput="onEqSliderChange(9, this.value)">
+            </div>
+            
+            <button onclick="applyEqPreset('flat'); toggleEqualizerModal();" class="w-full py-3 rounded-xl bg-surface-hover text-muted hover:text-main hover:bg-border-color font-medium transition-colors">Сбросить</button>
+        </div>
+    </div>
+
+    <!-- ADD TO PLAYLIST MODAL -->
+    <div id="add-playlist-modal" class="fixed inset-0 z-50 bg-black/60 backdrop-blur-md flex items-center justify-center p-4 hidden transition-opacity fade-in" onclick="if(event.target === this) closeAddToPlaylistModal()">
+        <div class="border border-border-color rounded-3xl p-6 max-w-sm w-full shadow-2xl relative transition-transform" style="background-color: var(--bg-card);">
+            <h3 class="text-xl font-bold mb-4 text-main">В плейлист</h3>
+            <select id="modal-playlist-select" class="w-full p-3 rounded-xl bg-surface-hover text-main border border-transparent outline-none mb-6 text-sm transition-colors"></select>
+            <div class="flex justify-end gap-3">
+                <button onclick="closeAddToPlaylistModal()" class="px-5 py-2.5 rounded-xl bg-transparent text-muted hover:bg-surface-hover font-medium text-sm transition-colors">Отмена</button>
+                <button onclick="confirmAddToPlaylist()" class="px-5 py-2.5 rounded-xl bg-primary text-black font-medium text-sm hover:bg-primary-hover shadow transition-colors">Добавить</button>
+            </div>
+        </div>
+    </div>
+
+    <audio id="audio-player" class="hidden" crossorigin="anonymous"></audio>
+    <script src="/static/js/app.js"></script>
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('/static/sw.js').catch((e) => console.warn('SW registration failed:', e));
+        });
+      }
+    </script>
+</body>
+</html>
